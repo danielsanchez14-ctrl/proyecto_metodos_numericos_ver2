@@ -133,7 +133,13 @@ class MainWindow:
         Por ahora solo cubre búsqueda de raíces (Bisección, Falsa posición);
         se amplía cuando agreguemos métodos de optimización.
         """
-        if resultado.classification is not None:
+        if isinstance(resultado.result_x, tuple):
+            x, y = resultado.result_x
+            tipo = "Máximo" if resultado.is_maximization else "Mínimo"
+            return (f"{tipo}: (x={x:.6f}, y={y:.6f}, f={resultado.result_value:.6f})"
+                    f"— {resultado.iterations} iteraciones")
+        
+        elif resultado.classification is not None:
             return (f"{resultado.classification}: "
                 f"(x={resultado.result_x:.6f}, f={resultado.result_value:.6f}) "
                 f"— {resultado.iterations} iteraciones")

@@ -21,6 +21,8 @@ class TwoVariablePlotter:
 
         contour = ax.contourf(X, Y, Z, levels=30, cmap="viridis")
         fig.colorbar(contour, ax=ax, label="f(x, y)")
+        contour_lines = ax.contour(X, Y, Z, levels=15, colors="black", linewidths=0.6)
+        ax.clabel(contour_lines, inline=True, fontsize=7, fmt="%.1f")
 
         if best_point is not None:
             ax.plot(best_point[0], best_point[1], "r*", markersize=15, label="Óptimo encontrado")

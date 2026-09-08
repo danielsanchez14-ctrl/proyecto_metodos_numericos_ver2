@@ -30,7 +30,7 @@ class SingleVariableParser(Parser):
                 variable = free_vars[0]
 
             return expression, [variable]
-        except (sp.SympifyError, SyntaxError, TypeError, tokenize.TokenizeError) as e:
+        except (sp.SympifyError, SyntaxError, TypeError, tokenize.TokenError) as e:
             raise ParserError(f"No se pudo interpretar la función '{f}': revisa la sintaxis.") from e
 
     def to_python_function(self, f, variable_list):

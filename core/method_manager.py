@@ -4,6 +4,7 @@ from core.handlers.false_position_handler import FalsePositionHandler
 from core.handlers.quadratic_interpolation_handler import QuadraticInterpolationHandler
 from core.handlers.newton_raphson_roots_handler import NewtonRaphsonRootsHandler
 from core.handlers.newton_raphson_optimization_handler import NewtonRaphsonOptimizationHandler
+from core.handlers.random_search_handler import RandomSearchHandler
 
 
 from core.abstract_classes.method_handler import MethodHandler
@@ -23,6 +24,7 @@ class MethodManager:
         "Interpolación cuadrática": QuadraticInterpolationHandler,
         "Newton-Raphson (raíces)": NewtonRaphsonRootsHandler,
         "Newton-Raphson (optimización)": NewtonRaphsonOptimizationHandler,
+        "Búsqueda aleatoria": RandomSearchHandler,
     }
 
     @classmethod
