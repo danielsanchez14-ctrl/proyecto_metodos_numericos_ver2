@@ -4,7 +4,7 @@ import random
 
 class RandomSearchMethod:
     @staticmethod
-    def compute(f : Callable[[float, float], float], points_x: tuple[float, float], points_y:tuple[float, float], maximize : bool = True, tol : float = 0.0001):
+    def compute(f : Callable[[float, float], float], points_x: tuple[float, float], points_y:tuple[float, float], maximize : bool = True, max_iter : int = 500000):
         # Desempaquetar puntos en x y en y
         xl, xu = points_x
         yl, yu = points_y
@@ -20,8 +20,8 @@ class RandomSearchMethod:
         error = None
         optimal_x, optimal_y = None, None
 
-        MAX_ITER = 500000
-        for i in range(MAX_ITER):
+        
+        for i in range(max_iter):
             x_random = xl + (xu - xl)*random.random()
             y_random = yl + (yu - yl)*random.random()
 
@@ -42,14 +42,7 @@ class RandomSearchMethod:
             table["mejor"].append(critical_point_f)
             table["error"].append(error)
 
-            if improved and previous_best not in (float('-inf'), float('inf')):
-                stop_error = abs(critical_point_f - previous_best)
-                if stop_error < tol:
-                    break
-
         return optimal_x, optimal_y, critical_point_f, table, i + 1
-    
-
 
 
             

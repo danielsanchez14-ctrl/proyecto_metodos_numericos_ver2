@@ -17,8 +17,8 @@ class RandomSearchHandler(MethodHandler):
             ParamSpec(name="xu", label="x máximo", type="float"),
             ParamSpec(name="yl", label="y mínimo", type="float"),
             ParamSpec(name="yu", label="y máximo", type="float"),
-            ParamSpec(name="tol", label="Tolerancia", type="float", default="0.0001"),
             ParamSpec(name="maximize", label="¿Buscar máximo?", type="bool", default="True"),
+            ParamSpec(name="max_iter", label="Iteraciones", type="int", default="500000")
         ]
 
     def execute(self, raw_values: dict[str, str]) -> MethodResult:
@@ -28,8 +28,9 @@ class RandomSearchHandler(MethodHandler):
         xu = float(raw_values["xu"])
         yl = float(raw_values["yl"])
         yu = float(raw_values["yu"])
-        tol = float(raw_values["tol"])
+        # tol = float(raw_values["tol"])
         maximize = raw_values["maximize"].strip().lower() == "true"
+        iterations_default = int(raw_values["max_iter"])
 
         # 2. Convertir texto de función a algo evaluable (2 variables)
         parser = TwoVariableParser()
@@ -38,7 +39,7 @@ class RandomSearchHandler(MethodHandler):
 
         # 3. Ejecutar el algoritmo puro
         optimal_x, optimal_y, best_value, table, iterations = RandomSearchMethod.compute(
-            f, (xl, xu), (yl, yu), maximize, tol
+            f, (xl, xu), (yl, yu), maximize, iterations_default
         )
         df = pd.DataFrame(table)
 
