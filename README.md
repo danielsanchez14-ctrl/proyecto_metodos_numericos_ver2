@@ -69,6 +69,24 @@ Aplicación de escritorio para ejecutar métodos numéricos y visualizar sus res
 - Búsqueda aleatoria
 - Soporte para funciones de dos variables en la lógica de visualización y parsing
 
+## Requisitos
+
+La aplicación fue validada en el siguiente entorno:
+
+- Python: 3.14.7
+- NumPy: 2.5.2
+- pandas: 3.0.5
+- Matplotlib: 3.11.0
+- SymPy: 1.14.0
+- SciPy: 1.18.0
+- Tkinter: incluido con la instalación estándar de Python en Windows
+
+Se recomienda usar Python 3.12 o superior. Si necesitas instalar manualmente las dependencias, puedes hacerlo con:
+
+```bash
+pip install numpy==2.5.2 pandas==3.0.5 matplotlib==3.11.0 sympy==1.14.0 scipy==1.18.0
+```
+
 ## Ejecución
 
 Desde la raíz del proyecto, ejecuta:
